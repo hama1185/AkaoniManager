@@ -15,6 +15,7 @@ public class OgreClient : MonoBehaviour {
     // Start is called before the first frame update
     public Dropdown dropdown;
     bool flag = false;
+    public Canvas canvas;
     public void InitClient(){
         if(dropdown.value == 1){
             ip = HostList.phone1.ip;
@@ -24,7 +25,9 @@ public class OgreClient : MonoBehaviour {
             ip = HostList.phone2.ip;
             port = HostList.phone2.port_umpireReceive;
         }
-        
+        if(dropdown.value == 0){
+            flag = false;
+        }
         // Debug.Log("client IP : " + ip + "   port : " + port);
         try{
             OSCHandler.Instance.clientInit("Manager", ip,port);//ipには接続先のipアドレスの文字列を入れる。
@@ -34,12 +37,22 @@ public class OgreClient : MonoBehaviour {
         }
     }
     static public void SpawnSend(){
-        OSCHandler.Instance.SendMessageToClient("Manager", "/ManageSpawn", "OK");
+        List<float> spawnList = new List<float>();
+        spawnList.Add(UIvalue.fieldXvalue);
+        spawnList.Add(UIvalue.fieldYvalue);
+        OSCHandler.Instance.SendMessageToClient("Manager", "/ManageSpawn", spawnList);
         Debug.Log("SpawnOgre");
     }
     private void FixedUpdate(){
         if(flag){
-            Debug.Log("b");
+            if(canvas.transform.GetChild(5).gameObject.activeSelf){ 
+                List<float> statusList = new List<float>();
+                statusList.Add(UIvalue.ogreRelaxValue);
+                statusList.Add(UIvalue.ogreMindValue);
+                OSCHandler.Instance.SendMessageToClient("Manager", "/Mindstatus", statusList);
+                // Debug.Log("ogre relax" + scrollbar.ogreRelaxStatus);
+                // Debug.Log("ogre mind" + scrollbar.ogreMindStatus);
+            }
         }
     }
 }

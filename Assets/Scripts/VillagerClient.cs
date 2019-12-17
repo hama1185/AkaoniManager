@@ -15,6 +15,9 @@ public class VillagerClient : MonoBehaviour {
     // Start is called before the first frame update
     public Dropdown dropdown;
     bool flag = false;
+
+    public Canvas canvas;
+
     public void InitClient(){
         if(dropdown.value == 1){
             ip = HostList.phone2.ip;
@@ -35,12 +38,22 @@ public class VillagerClient : MonoBehaviour {
         }
     }
     static public void SpawnSend(){
-        OSCHandler.Instance.SendMessageToClient("Manager", "/ManageSpawn", "OK");
+        List<float> spawnList = new List<float>();
+        spawnList.Add(UIvalue.fieldXvalue);
+        spawnList.Add(UIvalue.fieldYvalue);
+        OSCHandler.Instance.SendMessageToClient("Manager", "/ManageSpawn", spawnList);
         Debug.Log("SpawnVillager");
     }
     private void FixedUpdate(){
         if(flag){
-            Debug.Log("a");
+            if(canvas.transform.GetChild(5).gameObject.activeSelf){ 
+                List<float> statusList = new List<float>();
+                statusList.Add(UIvalue.villagerRelaxValue);
+                statusList.Add(UIvalue.villagerMindValue);
+                OSCHandler.Instance.SendMessageToClient("Manager", "/Mindstatus", statusList);
+                // Debug.Log("villager relax" + UIvalue.villagerRelaxStatus);
+                // Debug.Log("villager mind" + UIvalue.villagerMindStatus);
+            }
         }
     }
 }
