@@ -40,7 +40,7 @@ public class OgreClient : MonoBehaviour {
         List<float> spawnList = new List<float>();
         spawnList.Add(UIvalue.fieldXvalue);
         spawnList.Add(UIvalue.fieldYvalue);
-        OSCHandler.Instance.SendMessageToClient("Manager", "/ManageSpawn", spawnList);
+        OSCHandler.Instance.SendMessageToClient("ManagerOgre", "/ManageSpawn", spawnList);
         Debug.Log("SpawnOgre");
     }
     private void FixedUpdate(){
@@ -49,7 +49,7 @@ public class OgreClient : MonoBehaviour {
                 List<float> statusList = new List<float>();
                 statusList.Add(UIvalue.ogreRelaxValue);
                 statusList.Add(UIvalue.ogreMindValue);
-                OSCHandler.Instance.SendMessageToClient("Manager", "/Mindstatus", statusList);
+                OSCHandler.Instance.SendMessageToClient("ManagerOgre", "/Mindstatus", statusList);
                 // Debug.Log("ogre relax" + scrollbar.ogreRelaxStatus);
                 // Debug.Log("ogre mind" + scrollbar.ogreMindStatus);
             }

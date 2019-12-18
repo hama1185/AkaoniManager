@@ -41,7 +41,7 @@ public class VillagerClient : MonoBehaviour {
         List<float> spawnList = new List<float>();
         spawnList.Add(UIvalue.fieldXvalue);
         spawnList.Add(UIvalue.fieldYvalue);
-        OSCHandler.Instance.SendMessageToClient("Manager", "/ManageSpawn", spawnList);
+        OSCHandler.Instance.SendMessageToClient("ManagerVillager", "/ManageSpawn", spawnList);
         Debug.Log("SpawnVillager");
     }
     private void FixedUpdate(){
@@ -50,7 +50,7 @@ public class VillagerClient : MonoBehaviour {
                 List<float> statusList = new List<float>();
                 statusList.Add(UIvalue.villagerRelaxValue);
                 statusList.Add(UIvalue.villagerMindValue);
-                OSCHandler.Instance.SendMessageToClient("Manager", "/Mindstatus", statusList);
+                OSCHandler.Instance.SendMessageToClient("ManagerVillager", "/Mindstatus", statusList);
                 // Debug.Log("villager relax" + UIvalue.villagerRelaxStatus);
                 // Debug.Log("villager mind" + UIvalue.villagerMindStatus);
             }
