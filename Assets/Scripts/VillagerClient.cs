@@ -31,7 +31,7 @@ public class VillagerClient : MonoBehaviour {
         // Debug.Log("client IP : " + ip + "   port : " + port);
 
         try{
-            OSCHandler.Instance.clientInit("Manager", ip,port);//ipには接続先のipアドレスの文字列を入れる。
+            OSCHandler.Instance.clientInit("ManagerVillager", ip,port);//ipには接続先のipアドレスの文字列を入れる。
             flag = true; 
         }
         catch (System.FormatException){
