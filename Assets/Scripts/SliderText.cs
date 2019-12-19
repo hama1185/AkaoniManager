@@ -24,7 +24,8 @@ public class SliderText : MonoBehaviour
                 Xslider.value = float.Parse(Xinput.text) / 100;
                 Yslider.value = float.Parse(Yinput.text) / 100;
             }
-            catch(System.FormatException){}
+            catch(System.FormatException){                
+            }
         }
     }
 

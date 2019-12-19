@@ -39,10 +39,17 @@ public class VillagerClient : MonoBehaviour {
     }
     static public void SpawnSend(){
         List<float> spawnList = new List<float>();
-        spawnList.Add(UIvalue.fieldXvalue);
-        spawnList.Add(UIvalue.fieldYvalue);
+        spawnList.Add(UIvalue.spawnXvalue);
+        spawnList.Add(UIvalue.spawnYvalue);
         OSCHandler.Instance.SendMessageToClient("ManagerVillager", "/ManageSpawn", spawnList);
         Debug.Log("SpawnVillager");
+    }
+    static public void PlayareaSend(){
+        List<float> sizeList = new List<float>();
+        sizeList.Add(UIvalue.PlayareaSizeX);
+        sizeList.Add(UIvalue.PlayareaSizeY);
+        OSCHandler.Instance.SendMessageToClient("ManagerVillager", "/PlayareaSize", sizeList);
+        Debug.Log("down");
     }
     private void FixedUpdate(){
         if(flag){

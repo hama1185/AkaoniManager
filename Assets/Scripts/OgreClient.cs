@@ -38,10 +38,16 @@ public class OgreClient : MonoBehaviour {
     }
     static public void SpawnSend(){
         List<float> spawnList = new List<float>();
-        spawnList.Add(UIvalue.fieldXvalue);
-        spawnList.Add(UIvalue.fieldYvalue);
+        spawnList.Add(UIvalue.spawnXvalue);
+        spawnList.Add(UIvalue.spawnYvalue);
         OSCHandler.Instance.SendMessageToClient("ManagerOgre", "/ManageSpawn", spawnList);
-        Debug.Log("SpawnOgre");
+    }
+    static public void PlayareaSend(){
+        List<float> sizeList = new List<float>();
+        sizeList.Add(UIvalue.PlayareaSizeX);
+        sizeList.Add(UIvalue.PlayareaSizeY);
+        OSCHandler.Instance.SendMessageToClient("ManagerOgre", "/PlayareaSize", sizeList);
+        Debug.Log("down");
     }
     private void FixedUpdate(){
         if(flag){

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ButtonSend : MonoBehaviour
 {
+    public bool spawnFlag;
+    public bool fieldFlag;
     public Canvas canvas;
     Toggle ogreSpawnToggle;
     Toggle villagerSpawnToggle;
@@ -11,15 +13,35 @@ public class ButtonSend : MonoBehaviour
     void Start(){
         ogreSpawnToggle = canvas.transform.GetChild(2).GetChild(0).gameObject.GetComponent<Toggle>();
         villagerSpawnToggle = canvas.transform.GetChild(2).GetChild(1).gameObject.GetComponent<Toggle>();
+        spawnFlag = true;
+        fieldFlag = true;
     }
 
     // Update is called once per frame
     public void SpwanSend(){
-        if(ogreSpawnToggle.isOn){
-            OgreClient.SpawnSend();
+        if(spawnFlag){
+            if(ogreSpawnToggle.isOn){
+                OgreClient.SpawnSend();
+            }
+            if(villagerSpawnToggle.isOn){
+                VillagerClient.SpawnSend();
+            }
+            spawnFlag = false;
         }
-        if(villagerSpawnToggle.isOn){
-            VillagerClient.SpawnSend();
+    }
+    public void PlayareaSizeSend(){
+        if(fieldFlag){
+            OgreClient.PlayareaSend();
+            VillagerClient.PlayareaSend();
+            fieldFlag = false;
         }
+    }
+    public void resetSpwanFlag(){
+        spawnFlag = true;
+        Debug.Log("up");
+    }
+    public void resetFieldFlag(){
+        fieldFlag = true;
+        Debug.Log("up");
     }
 }
