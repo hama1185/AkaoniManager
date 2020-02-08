@@ -6988,9 +6988,9 @@ MonoBehaviour:
     m_Options:
     - m_Text: None
       m_Image: {fileID: 0}
-    - m_Text: 58
+    - m_Text: phone1
       m_Image: {fileID: 0}
-    - m_Text: 59
+    - m_Text: phone2
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
