@@ -36,6 +36,9 @@ public class ButtonSend : MonoBehaviour
             fieldFlag = false;
         }
     }
+    public void RealSenseMove(){
+        
+    }
     public void resetSpwanFlag(){
         spawnFlag = true;
         Debug.Log("up");
