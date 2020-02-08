@@ -13,19 +13,19 @@ public class OgreRealSenseClient : MonoBehaviour
     public int port;
 	#endregion //----------追記
     // Start is called before the first frame update
-    public Dropdown dropdown;
+    public Dropdown charDropdown;
     bool flag = false;
     public Canvas canvas;
     public void InitClient(){
-        if(dropdown.value == 1){
+        if(charDropdown.value == 1){
             ip = HostList.phone1.ip_raspberrypi;
             port = HostList.phone1.port_raspberrypi;
         }
-        if(dropdown.value == 2){
+        if(charDropdown.value == 2){
             ip = HostList.phone2.ip_raspberrypi;
             port = HostList.phone2.port_raspberrypi;
         }
-        if(dropdown.value == 0){
+        if(charDropdown.value == 0){
             flag = false;
         }
         // Debug.Log("client IP : " + ip + "   port : " + port);
@@ -35,6 +35,12 @@ public class OgreRealSenseClient : MonoBehaviour
         }
         catch (System.FormatException){
         }
+    }
+    static public void RealSenseStartSend(){
+        OSCHandler.Instance.SendMessageToClient("RealSenseOgre", "/start", "");
+    }
+    static public void RealSenseStopSend(){
+        OSCHandler.Instance.SendMessageToClient("RealSenseOgre", "/stop", "");
     }
     // Start is called before the first frame update
 }

@@ -14,7 +14,7 @@ public class OgreClient : MonoBehaviour {
 	#endregion //----------追記
     // Start is called before the first frame update
     public Dropdown dropdown;
-    bool flag = false;
+    bool stopedFlag = false;
     public Canvas canvas;
     public void InitClient(){
         if(dropdown.value == 1){
@@ -26,12 +26,12 @@ public class OgreClient : MonoBehaviour {
             port = HostList.phone2.port_umpireReceive;
         }
         if(dropdown.value == 0){
-            flag = false;
+            stopedFlag = false;
         }
         // Debug.Log("client IP : " + ip + "   port : " + port);
         try{
             OSCHandler.Instance.clientInit("ManagerOgre", ip,port);//ipには接続先のipアドレスの文字列を入れる。
-            flag = true; 
+            stopedFlag = true; 
         }
         catch (System.FormatException){
         }
@@ -50,7 +50,7 @@ public class OgreClient : MonoBehaviour {
         Debug.Log("down");
     }
     private void FixedUpdate(){
-        if(flag){
+        if(stopedFlag){
             if(canvas.transform.GetChild(5).gameObject.activeSelf){ 
                 List<float> statusList = new List<float>();
                 statusList.Add(UIvalue.ogreRelaxValue);
