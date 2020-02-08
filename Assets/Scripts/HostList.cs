@@ -4,7 +4,7 @@ using UnityEngine;
 
 static public class HostList {
     static public Host phone1 = new Host(
-        "192.168.11.2",
+        "192.168.11.58",
         "192.168.11.3",
         8000,
         8001,
@@ -14,7 +14,7 @@ static public class HostList {
         8008
     );
     static public Host phone2 = new Host(
-        "192.168.11.30",
+        "192.168.11.59",
         "192.168.11.4",
         8001,
         8000,
@@ -24,7 +24,7 @@ static public class HostList {
         8008
     );
     static public string ip_audience = "192.168.11.60";//古いスマホ
-    static public string ip_umpire = "192.168.11.3";//古いスマホ
+    static public string ip_umpire = "192.168.11.61";//古いスマホ
 
     static public ID clientID = new ID(
         "enemy",
